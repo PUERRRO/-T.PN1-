@@ -1,0 +1,13 @@
+{
+    Console.WriteLine("Número para pasar a binario:");
+    int numDec = int.Parse(Console.ReadLine());
+    string binario = "";
+
+    if (numDec == 0) binario = "0";
+    while (numDec > 0)
+    {
+        binario = (numDec % 2) + binario;
+        numDec = numDec / 2;
+    }
+    Console.WriteLine("Binario: " + binario);
+}
