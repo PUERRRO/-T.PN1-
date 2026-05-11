@@ -1,0 +1,16 @@
+{
+    Console.WriteLine("Número para factorizar:");
+    int numFact = int.Parse(Console.ReadLine());
+    int div = 2;
+
+    while (numFact > 1)
+    {
+        if (numFact % div == 0)
+        {
+            Console.Write(div + " ");
+            numFact = numFact / div;
+        }
+        else div++;
+    }
+    Console.WriteLine();
+}
