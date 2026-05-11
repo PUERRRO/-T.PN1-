@@ -1,0 +1,19 @@
+{
+    Console.WriteLine("Ingresá un número para calcular su raíz cuadrada:");
+    double numero = double.Parse(Console.ReadLine());
+    double x = numero;
+    double raiz = 0;
+
+    while (true)
+    {
+        raiz = 0.5 * (x + (numero / x));
+
+        if ((x - raiz) < 0.0001 && (x - raiz) > -0.0001)
+        {
+            break;
+        }
+        x = raiz;
+    }
+
+    Console.WriteLine("La raíz cuadrada aproximada es: " + raiz);
+}
