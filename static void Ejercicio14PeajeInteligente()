@@ -1,0 +1,59 @@
+{
+    double totalRecaudado = 0;
+    int totalVehiculos = 0;
+    string tipoVehiculo = "";
+
+    while (tipoVehiculo != "cierre")
+    {
+        Console.WriteLine("Ingresá tipo de vehículo (moto, auto, camion) o 'cierre' para terminar:");
+        tipoVehiculo = Console.ReadLine();
+
+        if (tipoVehiculo == "cierre")
+        {
+            break;
+        }
+
+        double costo = 0;
+
+        if (tipoVehiculo == "moto")
+        {
+            costo = 5.00;
+        }
+        else if (tipoVehiculo == "auto")
+        {
+            costo = 10.00;
+            Console.WriteLine("¿Cuántos pasajeros lleva?");
+            int pasajeros = int.Parse(Console.ReadLine());
+
+            if (pasajeros >= 3)
+            {
+                costo = costo * 0.50;
+            }
+        }
+        else if (tipoVehiculo == "camion")
+        {
+            Console.WriteLine("¿Cuántos ejes tiene?");
+            int ejes = int.Parse(Console.ReadLine());
+            costo = 15.00 * ejes;
+        }
+
+        Console.WriteLine("¿A qué hora pasó? (Ingresá solo la hora, ej: 8 o 17):");
+        int hora = int.Parse(Console.ReadLine());
+
+        if ((hora >= 6 && hora <= 9) || (hora >= 17 && hora <= 20))
+        {
+            costo = costo + (costo * 0.20);
+        }
+
+        Console.WriteLine("Total a cobrar por este vehículo: $" + costo);
+        totalRecaudado = totalRecaudado + costo;
+        totalVehiculos++;
+    }
+
+    Console.WriteLine("Total recaudado: $" + totalRecaudado);
+
+    if (totalVehiculos > 0)
+    {
+        Console.WriteLine("Promedio de cobro por vehículo: $" + (totalRecaudado / totalVehiculos));
+    }
+}
