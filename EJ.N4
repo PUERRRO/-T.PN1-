@@ -1,0 +1,10 @@
+{
+    Console.WriteLine("Valor de aire:");
+    int aire = int.Parse(Console.ReadLine());
+
+    if (aire <= 50) Console.WriteLine("Buena");
+    else if (aire <= 100) Console.WriteLine("Moderada");
+    else if (aire <= 150) Console.WriteLine("Dañina para sensibles");
+    else if (aire <= 200) Console.WriteLine("Dañina");
+    else Console.WriteLine("Peligrosa");
+}
