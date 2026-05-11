@@ -1,0 +1,14 @@
+{
+    Console.WriteLine("X:");
+    double x = double.Parse(Console.ReadLine());
+    Console.WriteLine("Y:");
+    double y = double.Parse(Console.ReadLine());
+
+    if (x == 0 && y == 0) Console.WriteLine("Origen");
+    else if (x == 0) Console.WriteLine("Eje Y");
+    else if (y == 0) Console.WriteLine("Eje X");
+    else if (x > 0 && y > 0) Console.WriteLine("Cuadrante I");
+    else if (x < 0 && y > 0) Console.WriteLine("Cuadrante II");
+    else if (x < 0 && y < 0) Console.WriteLine("Cuadrante III");
+    else Console.WriteLine("Cuadrante IV");
+}
