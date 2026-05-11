@@ -1,0 +1,95 @@
+{
+    Console.WriteLine("Ingresá tu edad:");
+    int edad = int.Parse(Console.ReadLine());
+
+    if (edad < 18 || edad > 75)
+    {
+        Console.WriteLine("Crédito rechazado automáticamente por la edad.");
+    }
+    else
+    {
+        Console.WriteLine("Ingresá tus ingresos mensuales:");
+        double ingresos = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("Ingresá tu puntaje crediticio (0 a 1000):");
+        int puntaje = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Ingresá el monto solicitado:");
+        double monto = double.Parse(Console.ReadLine());
+
+        double interes = 0;
+        bool aprobado = true;
+
+        if (puntaje > 800)
+        {
+            interes = 0.05;
+        }
+        else if (puntaje >= 600 && puntaje <= 800)
+        {
+            interes = 0.12;
+        }
+        else
+        {
+            Console.WriteLine("Su puntaje es menor a 600. ¿Tiene un aval? (si/no):");
+            string aval = Console.ReadLine();
+            if (aval == "si")
+            {
+                interes = 0.15;
+            }
+            else
+            {
+                aprobado = false;
+            }
+        }
+
+        if (aprobado == false)
+        {
+            Console.WriteLine("Crédito rechazado por falta de aval.");
+        }
+        else
+        {
+            double deudaTotal = monto + (monto * interes);
+            double topeCuota = ingresos * 0.30;
+
+            Console.WriteLine("Ingresá en cuántas cuotas (plazo) querés pagar:");
+            int plazo = int.Parse(Console.ReadLine());
+
+            double cuotaMensual = deudaTotal / plazo;
+
+            while (cuotaMensual > topeCuota)
+            {
+                Console.WriteLine("La cuota supera el 30% de su ingreso.");
+                Console.WriteLine("Ingresá un plazo mayor para bajar la cuota o ingresá '0' para cancelar:");
+                plazo = int.Parse(Console.ReadLine());
+
+                if (plazo == 0)
+                {
+                    aprobado = false;
+                    break;
+                }
+
+                cuotaMensual = deudaTotal / plazo;
+            }
+
+            if (aprobado == true)
+            {
+                Console.WriteLine("¡Solicitud Aprobada! Apta para su sueldo.");
+                Console.WriteLine("Mes | Pago | Saldo Restante");
+
+                double saldo = deudaTotal;
+
+                for (int i = 1; i <= plazo; i++)
+                {
+                    saldo = saldo - cuotaMensual;
+                    if (saldo < 0) saldo = 0;
+                    Console.WriteLine(i + " | $" + cuotaMensual + " | $" + saldo);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Solicitud cancelada.");
+            }
+        }
+    }
+}
+
