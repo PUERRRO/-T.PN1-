@@ -1,0 +1,24 @@
+#{
+    Console.WriteLine("Lado A:");
+    double a = double.Parse(Console.ReadLine());
+    Console WriteLine("Lado B:");
+    double b = double.Parse(Console.ReadLine());
+    Console.WriteLine("Lado C:");
+    double c = double.Parse(Console.ReadLine());
+
+    if (a + b > c && a + c > b && b + c > a)
+    {
+        if (a == b && b == c) Console.WriteLine("Equilátero");
+        else if (a != b && a != c && b != c) Console.WriteLine("Escaleno");
+        else Console.WriteLine("Isósceles");
+
+        if ((a * a) + (b * b) == (c * c) || (a * a) + (c * c) == (b * b) || (b * b) + (c * c) == (a * a))
+        {
+            Console.WriteLine("También es rectángulo");
+        }
+    }
+    else
+    {
+        Console.WriteLine("No es válido");
+    }
+}
