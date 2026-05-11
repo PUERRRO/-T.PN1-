@@ -1,0 +1,13 @@
+{
+    Console.WriteLine("Número para saber si es primo:");
+    int numPrimo = int.Parse(Console.ReadLine());
+    int divisores = 0;
+
+    for (int i = 1; i <= numPrimo; i++)
+    {
+        if (numPrimo % i == 0) divisores++;
+    }
+
+    if (divisores == 2) Console.WriteLine("Es primo");
+    else Console.WriteLine("No es primo");
+}
